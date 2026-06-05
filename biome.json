@@ -7,19 +7,52 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
+    "includes": [
+      "**",
+      "!node_modules",
+      "!.next",
+      "!dist",
+      "!build"
+    ]
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space",
-    "indentWidth": 2
+    "lineWidth": 80,
+    "formatWithErrors": false,
+    "attributePosition": "auto",
+    "bracketSpacing": true,
+    "useEditorconfig": true,
+    "bracketSameLine": false,
+    "expand": "auto"
   },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
       "suspicious": {
-        "noUnknownAtRules": "off"
+        "recommended": true,
+        "noUnknownAtRules": "off",
+        "noExplicitAny": "warn",
+        "noArrayIndexKey": "warn",
+        "useStrictMode": "warn",
+        "noVar": "warn"
+      },
+      "correctness": {
+        "recommended": true,
+        "noUnusedVariables": "error",
+        "noUnusedImports": "error"
+      },
+      "style": {
+        "recommended": true,
+        "noCommonJs": "error",
+        "noMagicNumbers": "warn",
+        "useImportType": "error"
+      },
+      "a11y": {
+        "recommended": true,
+        "useAltText": "error",
+        "useHtmlLang": "error",
+        "useButtonType": "error"
       }
     },
     "domains": {
@@ -30,8 +63,46 @@
   "assist": {
     "actions": {
       "source": {
-        "organizeImports": "on"
+        "recommended": true,
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              [
+                ":BUN:",
+                ":NODE:"
+              ],
+              ":BLANK_LINE:",
+              [
+                ":PACKAGE:",
+                "!@myown/**"
+              ],
+              ":BLANK_LINE:",
+              "@myown/**",
+              ":BLANK_LINE:",
+              [
+                ":ALIAS:",
+                ":PATH:"
+              ]
+            ]
+          }
+        }
       }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingCommas": "none",
+      "arrowParentheses": "asNeeded",
+      "jsxQuoteStyle": "single",
+      "quoteProperties": "asNeeded",
+      "attributePosition": "auto",
+      "bracketSpacing": true,
+      "bracketSameLine": false,
+      "operatorLinebreak": "after",
+      "expand": "auto"
     }
   }
 }
